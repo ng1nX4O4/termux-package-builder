@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: xeffyr/termux-advanced-builder:latest
+        environment:
+          TERMUX_MAKE_PROCESSES: 4
+    steps:
+      - checkout
+      - run:
+          name: Cloning termux-packages
+          command: git clone https://github.com/termux/termux-packages
+      - run:
+          name: Cloning unstable-packages recursively
+          command: git clone --recursive https://github.com/termux/unstable-packages
+      - run:
+          name: Cloning x11-packages recursively
+          command: git clone --recursive https://github.com/termux/x11-packages
+      - run:
+          name: CI build stub
+          command: echo "No automatic builds configured here."
